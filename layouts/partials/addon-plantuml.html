@@ -1,0 +1,13 @@
+<script src="https://esbuild.vercel.app/plantuml-encoder@1.4.0?format=iife&globalName=pumle"></script>
+<script>
+    (async function () {
+        const diagrams = document.querySelectorAll(".special-plantuml")
+        for (let i = 0; i < diagrams.length; i++) {
+            const diagram = diagrams[i]
+            const data = diagram.dataset.plantuml
+            const decodedData = decodeURIComponent(escape(atob(data)))
+            const gvEncoded = pumle.encode(decodedData)
+            diagram.src = "https://www.planttext.com/api/plantuml/svg/" + gvEncoded
+        }
+    })()
+</script>

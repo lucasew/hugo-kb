@@ -1,0 +1,3 @@
+{{ $payload := .Inner }}
+
+<img src="" class="special-plantuml" data-plantuml="{{ $payload | base64Encode }}"></img>

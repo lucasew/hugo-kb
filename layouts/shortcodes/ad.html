@@ -1,0 +1,14 @@
+{{ $body := .Inner | markdownify }}
+{{ $type := .Get 0 }}
+{{ $title := .Get 1 }}
+{{ $icon_name := "info" }}
+
+<div class="admonition ad-{{ $type }}" data-title="{{ $title }}">
+    <div class="ad-header">
+        <div class="ad-icon"></div>
+        <p>{{ $title }}</p>
+    </div>
+    <div class="ad-content">
+    {{ $body }}
+    </div>
+</div>

@@ -1,0 +1,7 @@
+{{ $isURL := (not (eq (len (findRE "\\/" .)) 0)) }}
+
+{{ if (not $isURL) }}
+/icons/{{ . }}.svg
+{{ else }}
+{{ . }}
+{{ end }}

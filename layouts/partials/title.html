@@ -1,0 +1,11 @@
+<!-- I get a page, you get the title of the page -->
+{{ $title := "" }}
+{{ if not (eq .Title "") }}
+    {{ $title = .Title }}
+{{ else if not (eq .File.TranslationBaseName "_index") }}
+    {{ $title = .File.TranslationBaseName }}
+{{ else }}
+    {{ $title = (path.Base .File.Dir) }}
+{{ end }}
+
+{{ $title }}

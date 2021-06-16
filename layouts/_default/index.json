@@ -1,0 +1,7 @@
+{{ $items := slice }}
+{{ range .Site.RegularPages }}
+    {{ $title := (partial "title.html" . ) }}
+    {{ $items = (append $items (dict "title" $title "content" .Content "permalink" .Permalink)) }}
+{{ end }}
+
+{{ $items | jsonify }}

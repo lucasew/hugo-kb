@@ -1,0 +1,53 @@
+<style>
+.admonition {
+    margin: 20px;
+    border: 2px solid var(--ad-border);
+    border-radius: 5px;
+    --ad-border: black;
+    --ad-bg: white;
+    --ad-icon: url(https://raw.githubusercontent.com/feathericons/feather/master/icons/info.svg)
+}
+
+.ad-content {
+    padding: 5px;
+}
+
+.ad-content > * {
+    max-width: 100%;
+}
+
+.ad-warning {
+    --ad-bg: yellow;
+    --ad-icon: url(https://raw.githubusercontent.com/feathericons/feather/master/icons/alert-triangle.svg)
+}
+
+.ad-example {
+    --ad-bg: #008000;
+    --ad-icon: url(https://raw.githubusercontent.com/feathericons/feather/master/icons/target.svg)
+}
+
+.ad-info {
+    --ad-bg: blue;
+}
+
+.ad-header {
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    background-color: var(--ad-bg);
+}
+
+.ad-icon {
+    width: 30px;
+    height: 30px;
+    background-image: var(--ad-icon);
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 20px;
+}
+
+.ad-header p {
+    text-align: center;
+}
+
+</style>

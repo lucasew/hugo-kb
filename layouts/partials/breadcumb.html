@@ -1,0 +1,41 @@
+<style>
+div#breadcrumbs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+div#breadcrumbs > * {
+    color: black;
+    margin: 1px;
+    padding: 5px;
+    border-radius: 5px;
+    padding-left: 5px;
+    text-decoration: none;
+    border: black 2px solid;
+}
+
+div#breadcrumbs > .icon {
+    width: 20px;
+    height: 20px;
+}
+
+div#breadcrumbs > .active {
+    font-weight: bold;
+}
+</style>
+<div id="breadcrumbs">
+    {{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
+</div>
+{{ define "breadcrumbnav" }}
+{{ if .p1.Parent }}
+    {{ template "breadcrumbnav" (dict "p1" .p1.Parent "p2" .p2 )  }}
+{{ else if not .p1.IsHome }}
+    {{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
+{{ end }}
+    {{ if (eq .p1 .p2) }}
+        {{ partial "icon.html" .p1.Params.icon }}
+    {{ else }}
+        {{ partial "page-link.html" .p1 }}
+    {{ end }}
+{{ end }}

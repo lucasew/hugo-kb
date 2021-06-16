@@ -1,0 +1,39 @@
+{{ $index := getJSON "./content/meta.json" }}
+{{ $page := .Page }}
+{{ $content := .Content }}
+
+{{ $links := findRE "\\!\\[\\[([^\\]]*)\\]\\]" $content}}
+{{ range $links }}
+    {{ $wikilink := . }}
+    {{ $wikilinkName := . | replaceRE "\\!\\[\\[(.*)\\]\\]" "$1" | replaceRE "\\..*$" "" }}
+    {{ $path := $wikilinkName }}
+    {{ if (isset $index $wikilinkName) }}
+        {{ $meta := index $index $wikilinkName }}
+        {{ $path = $meta.path }}
+    {{ end }}
+    {{ $path := $path | replaceRE "^([^/])" "/$1" }}
+    {{ $linkPlaceholder := "<img src=\"$path\"></img>" }}
+    {{ $link := replace $linkPlaceholder "$path" $path  }}
+    {{ $content = replace $content $wikilink $link }}
+{{ end }}
+
+{{ $links := findRE "\\[\\[([^\\]]*)\\]\\]" $content}}
+{{ range $links }}
+    {{ $wikilink := . }}
+    {{ $wikilinkName := . | replaceRE "\\[\\[(.*)\\]\\]" "$1" }}
+    {{ $path := $wikilinkName }}
+    {{ $path = strings.TrimSuffix "_index.md" $path }}
+    {{ if (isset $index $wikilinkName) }}
+        {{ $path = (index $index $wikilinkName).path }}
+    {{ else }}
+        {{ $path = printf "%s.md" $wikilinkName }}
+    {{ end }}
+    {{ $path := $path  | replaceRE "^([^/])" "/$1" }}
+    {{ with site.GetPage $path }}
+        {{ $link := partial "page-link.html" . | string }}
+        {{ $link = trim $link "\n" | safeHTML }}
+        {{ $content = replace $content $wikilink $link }}
+    {{ end }}
+{{ end }}
+
+{{ $content | safeHTML }}

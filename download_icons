@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+TEMPDIR="$(mktemp -d)"
+
+git clone https://github.com/feathericons/feather "$TEMPDIR/fi"
+
+for f in $TEMPDIR/fi/icons/*.svg
+do
+    cp "$f" ./static/icons/ -v
+done
+
+git clone https://github.com/simple-icons/simple-icons "$TEMPDIR/si"
+
+for f in $TEMPDIR/si/icons/*.svg
+do
+    cp "$f" ./static/icons/ -v
+done
+
+rm -rf "$TEMPDIR"

@@ -1,0 +1,21 @@
+{{- define "item-list" -}}
+    <style>
+.taxonomy-kind {
+    display: flex;
+    flex-direction: row;
+}
+.taxonomy-kind .page-link {
+    padding-right: 10px;
+}
+    </style>
+    <script>console.log("{{ getJSON "./content/meta.json" }}")</script>
+    {{ $prop := .Page.RelPermalink | replaceRE ".*/(.*)/$" "$1" }}
+    {{ $tax := index .Site.Taxonomies $prop }}
+    {{ range $tax.ByCount }}
+        <div class="taxonomy-kind">
+        {{ partial "page-link.html" .Page }} ({{ .Count }})<br>
+        </div>
+    {{ end }}
+    <script>console.log("{{ $prop }}")</script>
+    <script>console.log("{{ $tax }}")</script>
+{{- end -}}

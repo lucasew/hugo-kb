@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}">
+<head>
+    {{ partial "addon-admonition.html" . }}
+    <meta charset="UTF-8">
+    {{- partial "head.html" . }}
+    {{ with .Page.File }}
+    <meta name="mdpath" content="{{ .Path }}" />
+    {{ end }}
+    <link rel="shortcut icon" href="{{trim (partial "icon-url.html" .Params.icon) "\n" }}">
+    <title>{{ partial "title.html" .Page }}</title>
+<style>
+
+@page {
+    margin: 0
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    max-width: min(80vw, 600px);
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.icon {
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.item-card a h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.item-card {
+    display: block;
+    float: left;
+    padding: 5px;
+}
+
+.item-card div {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.item-card div p {
+    padding-left: 5px;
+}
+
+div#header-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+div#header-title h1 {
+    text-align: center;
+}
+
+div#header-title .icon {
+    width: 30px;
+    height: 30px;
+    padding-right: 10px;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    float: left;
+
+    padding-right: 10px;
+}
+
+a {
+    background: var(--icon) no-repeat left center;
+}
+
+.page-link {
+    display: inline-block;
+    break-before: avoid;
+    border-bottom: 3px black solid;
+    padding: 3px;
+    text-decoration: none;
+    color: black;
+}
+
+blockquote {
+    border-left: 5px black solid;
+    padding-left: 10px;
+}
+
+.page-link .page-link-title {
+    display: block;
+    margin: 0;
+    overflow-x: hidden;
+    max-width: 30vw;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.katex-display {
+    margin: 0 !important;
+    display: inline-block !important;
+}
+
+</style>
+</head>
+
+<body>
+    <header>
+        <div id="header-title">
+            {{ partial "icon.html" .Params.icon }}
+            <h1>{{ partial "title.html" .Page }}</h1>
+        </div>
+        {{- partial "breadcumb.html" . -}}
+        {{ with .Params.web }}
+            <a class="page-link" href="{{ . }}">Link Relacionado</a>
+        {{ end }}
+        {{- block "content-header" . -}}{{ end }}
+        {{- partialCached "header.html" . .Page -}}
+    </header>
+    <main class="main">
+        {{ partial "content.html" . }}
+    </main>
+    <footer>
+    {{ partial "footer.html" . .Layout .Kind -}}
+    {{- block "item-list" . -}}{{ end }}
+    {{ partial "addon-plantuml.html" . }}
+    {{ partial "addon-katex.html" . }}
+    {{ partial "addon-link-enhancer.html" . }}
+    </footer>
+    </body>
+
+</html>

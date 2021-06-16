@@ -1,0 +1,13 @@
+{{- define "item-list" -}}
+    {{- if gt (len .Sections) 0 -}}
+    <h1>Pastas</h1>
+    {{- end -}}
+
+    {{ partial "post-filter.html" .Sections }}
+
+    {{- if gt (len .RegularPages) 0 -}}
+    <h1>Arquivos</h1>
+    {{- end -}}
+
+    {{ partial "post-filter.html" .RegularPages }}
+{{- end -}}

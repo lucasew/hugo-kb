@@ -1,0 +1,7 @@
+{{ range sort . "Title" }}
+    {{ block "list-item" . }}
+        {{ if not .Params.ignore }}
+            {{ partial "page-link.html" . }}<br>
+        {{ end }}
+    {{ end }}
+{{ end }}
