@@ -1,0 +1,11 @@
+{{ $index := getJSON "./content/meta.json" }}
+{{ $obsPage := .Page.File.Path | replaceRE ".md$" "" }}
+{{ with index $index $obsPage }}
+    {{ $refs := .referencedBy }}
+    {{ if gt (len $refs) 0 }}
+        <h1>Me referenciando</h1>
+        {{ range sort .referencedBy }}
+            {{ partial "page-link.html" (site.GetPage .) }}
+        {{ end }}
+    {{ end }}
+{{ end }}

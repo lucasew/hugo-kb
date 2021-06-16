@@ -139,6 +139,7 @@ blockquote {
     <footer>
     {{ partial "footer.html" . .Layout .Kind -}}
     {{- block "item-list" . -}}{{ end }}
+    {{ partial "backlinks.html" . }}
     {{ partial "addon-plantuml.html" . }}
     {{ partial "addon-katex.html" . }}
     {{ partial "addon-link-enhancer.html" . }}
