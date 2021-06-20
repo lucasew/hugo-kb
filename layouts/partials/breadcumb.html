@@ -23,6 +23,11 @@ div#breadcrumbs > .icon {
 div#breadcrumbs > .active {
     font-weight: bold;
 }
+@media print {
+    div#breadcrumbs {
+        display: none;
+    }
+}
 </style>
 <div id="breadcrumbs">
     {{ template "breadcrumbnav" (dict "p1" . "p2" .) }}

@@ -117,6 +117,23 @@ blockquote {
     display: inline-block !important;
 }
 
+.filepath {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media print {
+    .filepath, footer, #related-link {
+        display: none;
+    }
+    * {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+}
+
 </style>
 </head>
 
@@ -127,8 +144,11 @@ blockquote {
             <h1>{{ partial "title.html" .Page }}</h1>
         </div>
         {{- partial "breadcumb.html" . -}}
+        <div class="filepath">
+        {{ .File.Path }}
+        </div>
         {{ with .Params.web }}
-            <a class="page-link" href="{{ . }}">Link Relacionado</a>
+            <a class="page-link" id="related-link" href="{{ . }}">Link Relacionado</a>
         {{ end }}
         {{- block "content-header" . -}}{{ end }}
         {{- partialCached "header.html" . .Page -}}
