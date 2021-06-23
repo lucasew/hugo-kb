@@ -3,12 +3,12 @@
 {{ $title := .Get 1 }}
 {{ $icon_name := "info" }}
 
-<div class="admonition ad-{{ $type }}" data-title="{{ $title }}">
-    <div class="ad-header">
-        <div class="ad-icon"></div>
+<div class="admonition admonition-{{ $type }}" data-title="{{ $title }}">
+    <div class="admonition-header">
+        <div class="admonition-icon"></div>
         <p>{{ $title }}</p>
     </div>
-    <div class="ad-content">
+    <div class="admonition-content">
     {{ $body }}
     </div>
 </div>
