@@ -2,10 +2,15 @@
 {{ $title := "" }}
 {{ if not (eq .Title "") }}
     {{ $title = .Title }}
-{{ else if not (eq .File.TranslationBaseName "_index") }}
-    {{ $title = .File.TranslationBaseName }}
 {{ else }}
-    {{ $title = (path.Base .File.Dir) }}
+    {{ with .File }}
+        {{ if not (eq .TranslationBaseName "_index") }}
+            {{ $title = .TranslationBaseName }}
+        {{ else }}
+            {{ $title = (path.Base .Dir) }}
+        {{ end }}
+    {{ else }}
+    {{ $title = "<INEXISTENTE>" }}
+    {{ end }}
 {{ end }}
-
 {{ $title }}
