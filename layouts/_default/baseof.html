@@ -124,6 +124,22 @@ blockquote {
     justify-content: center;
 }
 
+input[type="checkbox"] {
+    appearance: none;
+    aspect-ratio: 1/1;
+    width: 1rem;
+    height: 1rem;
+    box-sizing: content-box;
+    vertical-align: middle;
+    border: 2px solid black;
+    border-radius: .2rem;
+    display: inline-block;
+    margin: 0;
+}
+input[type="checkbox"]:checked {
+    background-color: black;
+}
+
 @media print {
     .filepath, footer, #related-link {
         display: none;
