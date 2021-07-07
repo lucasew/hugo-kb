@@ -29,11 +29,6 @@ body {
     margin-right: auto;
 }
 
-.icon {
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
 .item-card a h1 {
     margin: 0;
     padding: 0;
@@ -83,6 +78,10 @@ header {
     float: left;
 
     padding-right: 10px;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    
 }
 
 a {
@@ -96,20 +95,17 @@ a {
     padding: 3px;
     text-decoration: none;
     color: black;
+    max-width: min(80vw, 300px);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0;
+    overflow-x: hidden;
+    padding-left: 25px;
 }
 
 blockquote {
     border-left: 5px black solid;
     padding-left: 10px;
-}
-
-.page-link .page-link-title {
-    display: block;
-    margin: 0;
-    overflow-x: hidden;
-    max-width: min(80vw, 300px);
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
 
 .katex-display {

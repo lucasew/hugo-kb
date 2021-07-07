@@ -1,2 +1,3 @@
 {{ $title := trim (partial "title.html" .) "\n "  | htmlUnescape }}
-<a class="page-link" title="{{ $title }}" href={{ .RelPermalink }}>{{partial "icon.html" .Params.icon}}<span class="page-link-title">{{ $title }}</span></a>
+{{ $icon := trim (partial "icon-url.html" .Params.icon) "\n" }}
+<a class="page-link" title="{{ $title }}" style="--icon:url({{  $icon }})" href={{ .RelPermalink }}>{{ $title }}</a>
