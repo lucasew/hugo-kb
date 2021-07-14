@@ -5,7 +5,8 @@
     {{ if gt (len $refs) 0 }}
         <h1>Me referenciando</h1>
         {{ range sort .referencedBy }}
-            {{ partial "page-link.html" (site.GetPage .) }}
+            {{ $page := site.GetPage . }}
+            {{ partialCached "page-link.html" $page $page.Permalink }}
         {{ end }}
     {{ end }}
 {{ end }}

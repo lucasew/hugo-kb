@@ -30,7 +30,7 @@
     {{ end }}
     {{ $path := $path  | replaceRE "^([^/])" "/$1" }}
     {{ with site.GetPage $path }}
-        {{ $link := partial "page-link.html" . | string }}
+        {{ $link := partialCached "page-link.html" . .Permalink | string }}
         {{ $link = trim $link "\n" | safeHTML }}
         {{ $content = replace $content $wikilink $link }}
     {{ end }}

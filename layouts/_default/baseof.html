@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}">
 <head>
-    {{ partial "addon-admonition.html" . }}
+    {{ partialCached "addon-admonition.html" . "" }}
     <meta charset="UTF-8">
-    {{- partial "head.html" . }}
+    {{- partialCached "head.html" . "" }}
     {{ with .Page.File }}
     <meta name="mdpath" content="{{ .Path }}" />
     {{ end }}
-    <link rel="shortcut icon" href="{{trim (partial "icon-url.html" .Params.icon) "\n" }}">
-    <title>{{ partial "title.html" .Page }}</title>
+    <link rel="shortcut icon" href="{{trim (partialCached "icon-url.html" .Params.icon .Params.icon) "\n" }}">
+    <title>{{ partialCached "title.html" .Page .Page.Permalink }}</title>
 <style>
 
 @page {
@@ -153,29 +153,29 @@ input[type="checkbox"]:checked {
 <body>
     <header>
         <div id="header-title">
-            {{ partial "icon.html" .Params.icon }}
-            <h1>{{ partial "title.html" .Page }}</h1>
+            {{ partialCached "icon.html" .Params.icon .Params.icon }}
+            <h1>{{ partialCached "title.html" .Page .Page.Permalink }}</h1>
         </div>
-        {{- partial "breadcumb.html" . -}}
+        {{- partialCached "breadcumb.html" . .Page.Permalink -}}
         <div class="filepath">
-        {{ .File.Path }}
+        {{ with .File }}
+            {{ .Path }}
+        {{ end }}
         </div>
         {{ with .Params.web }}
             <a class="page-link" id="related-link" href="{{ . }}">Link Relacionado</a>
         {{ end }}
         {{- block "content-header" . -}}{{ end }}
-        {{- partialCached "header.html" . .Page -}}
     </header>
     <main class="main">
-        {{ partial "content.html" . }}
+        {{ partialCached "content.html" . .Permalink }}
     </main>
     <footer>
-    {{ partial "footer.html" . .Layout .Kind -}}
     {{- block "item-list" . -}}{{ end }}
-    {{ partial "backlinks.html" . }}
-    {{ partial "addon-plantuml.html" . }}
-    {{ partial "addon-katex.html" . }}
-    {{ partial "addon-link-enhancer.html" . }}
+    {{ partialCached "backlinks.html" . .Permalink }}
+    {{ partialCached "addon-plantuml.html" . }}
+    {{ partialCached "addon-katex.html" . }}
+    {{ partialCached "addon-link-enhancer.html" . }}
     </footer>
     </body>
 

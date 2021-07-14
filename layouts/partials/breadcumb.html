@@ -39,8 +39,8 @@ div#breadcrumbs > .active {
     {{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
 {{ end }}
     {{ if (eq .p1 .p2) }}
-        {{ partial "icon.html" .p1.Params.icon }}
+        {{ partialCached "icon.html" .p1.Params.icon .p1.Params.icon }}
     {{ else }}
-        {{ partial "page-link.html" .p1 }}
+        {{ partialCached "page-link.html" .p1 .p1.Permalink }}
     {{ end }}
 {{ end }}

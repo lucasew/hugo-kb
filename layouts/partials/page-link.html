@@ -1,3 +1,3 @@
-{{ $title := trim (partial "title.html" .) "\n "  | htmlUnescape }}
-{{ $icon := trim (partial "icon-url.html" .Params.icon) "\n" }}
+{{ $title := trim (partialCached "title.html" . .Permalink) "\n "  | htmlUnescape }}
+{{ $icon := trim (partialCached "icon-url.html" .Params.icon .Params.icon) "\n" }}
 <a class="page-link" title="{{ $title }}" style="--icon:url({{  $icon }})" href={{ .RelPermalink }}>{{ $title }}</a>
