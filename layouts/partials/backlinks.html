@@ -1,12 +1,15 @@
-{{ $index := getJSON "./content/meta.json" }}
-{{ $obsPage := .Page.File.Path | replaceRE ".md$" "" }}
-{{ with index $index $obsPage }}
-    {{ $refs := .referencedBy }}
-    {{ if gt (len $refs) 0 }}
-        <h1>Me referenciando</h1>
-        {{ range sort .referencedBy }}
-            {{ $page := site.GetPage . }}
-            {{ partialCached "page-link.html" $page $page.Permalink }}
+{{ $root := . }}
+{{ with .Page.File }}
+    {{ $index := getJSON "./content/meta.json" }}
+    {{ $obsPage := $root.Page.File.Path | replaceRE ".md$" "" }}
+    {{ with index $index $obsPage }}
+        {{ $refs := .referencedBy }}
+        {{ if gt (len $refs) 0 }}
+            <h1>Me referenciando</h1>
+            {{ range sort .referencedBy }}
+                {{ $page := site.GetPage . }}
+                {{ partialCached "page-link.html" $page $page.Permalink }}
+            {{ end }}
         {{ end }}
     {{ end }}
 {{ end }}
