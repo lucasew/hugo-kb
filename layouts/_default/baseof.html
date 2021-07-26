@@ -9,6 +9,7 @@
     {{ end }}
     <link rel="shortcut icon" href="{{trim (partialCached "icon-url.html" .Params.icon .Params.icon) "\n" }}">
     <title>{{ partialCached "title.html" .Page .Page.Permalink }}</title>
+    <script>console.log("{{ .Permalink }}")</script>
 <style>
 
 @page {
@@ -109,10 +110,6 @@ blockquote {
     padding-left: 10px;
 }
 
-.katex-display {
-    margin: 0 !important;
-    display: inline-block !important;
-}
 
 .filepath {
     width: 100%;
