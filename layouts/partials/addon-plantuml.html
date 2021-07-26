@@ -9,5 +9,14 @@
             const gvEncoded = pumle.encode(decodedData)
             diagram.src = "https://www.planttext.com/api/plantuml/svg/" + gvEncoded
         }
+        const codeDiagrams = document.querySelectorAll(".language-plantuml")
+        for (let i = 0; i < codeDiagrams.length; i++) {
+            const diagram = codeDiagrams[i]
+            const data = diagram.innerText
+            const gvEncoded = pumle.encode(data)
+            const img = document.createElement("img")
+            img.src = "https://www.planttext.com/api/plantuml/svg/" + gvEncoded
+            diagram.parentNode.outerHTML = img.outerHTML
+        }
     })()
 </script>
