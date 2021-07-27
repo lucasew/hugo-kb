@@ -147,7 +147,7 @@ input[type="checkbox"]:checked {
 </style>
 </head>
 
-<body>
+<body data-page_id="{{ .Permalink | replaceRE "[^a-zA-Z0-9]" "-" }}">
     <header>
         <div id="header-title">
             {{ partialCached "icon.html" .Params.icon .Params.icon }}
@@ -173,6 +173,7 @@ input[type="checkbox"]:checked {
     {{ partialCached "addon-plantuml.html" . }}
     {{ partialCached "addon-katex.html" . }}
     {{ partialCached "addon-link-enhancer.html" . }}
+    {{ partialCached "addon-backlink-jumper.html" . }}
     </footer>
     </body>
 
