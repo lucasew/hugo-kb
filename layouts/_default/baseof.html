@@ -77,8 +77,7 @@ header {
     width: 20px;
     height: 20px;
     float: left;
-
-    padding-right: 10px;
+padding-right: 10px;
 
     background-repeat: no-repeat;
     background-size: contain;
@@ -147,18 +146,13 @@ input[type="checkbox"]:checked {
 </style>
 </head>
 
-<body data-page_id="{{ .Permalink | replaceRE "[^a-zA-Z0-9]" "-" }}">
+<body data-page_id="{{ .Permalink | replaceRE "[^a-zA-Z0-9]" "-" }}" data-file_name="{{ with .File }}{{ .Path }}{{ end }}">
     <header>
         <div id="header-title">
             {{ partialCached "icon.html" .Params.icon .Params.icon }}
             <h1>{{ partialCached "title.html" .Page .Page.Permalink }}</h1>
         </div>
         {{- partialCached "breadcumb.html" . .Page.Permalink -}}
-        <div class="filepath">
-        {{ with .File }}
-            {{ .Path }}
-        {{ end }}
-        </div>
         {{ with .Params.web }}
             <a class="page-link" id="related-link" href="{{ . }}">Link Relacionado</a>
         {{ end }}
@@ -174,7 +168,7 @@ input[type="checkbox"]:checked {
     {{ partialCached "addon-katex.html" . }}
     {{ partialCached "addon-link-enhancer.html" . }}
     {{ partialCached "addon-backlink-jumper.html" . }}
+    {{ partialCached "addon-copypathclipboard" . }}
     </footer>
     </body>
-
 </html>
