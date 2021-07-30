@@ -147,6 +147,7 @@ input[type="checkbox"]:checked {
 </head>
 
 <body data-page_id="{{ .Permalink | replaceRE "[^a-zA-Z0-9]" "-" }}" data-file_name="{{ with .File }}{{ .Path }}{{ end }}">
+    {{ partialCached "script-utils.html" . }}
     <header>
         <div id="header-title">
             {{ partialCached "icon.html" .Params.icon .Params.icon }}

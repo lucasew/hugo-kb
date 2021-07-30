@@ -1,0 +1,21 @@
+<script src="https://esbuild.vercel.app/plantuml-encoder@1.4.0?format=iife&globalName=pumle"></script>
+<script>
+    function parseBlockPayload(e) {
+        const itemRegex = /(.*):(.*)/
+        let ret = {}
+        const text = e.innerHTML
+        const lines = text.split("\n")
+        let i
+        for (i = 0; i < lines.length; i++) {
+            if (itemRegex.test(lines[i])) {
+                const [_, key, value] = itemRegex.exec(lines[i])
+                ret[key] = value
+            } else {
+                break
+            }
+        }
+        console.log(i)
+        ret.payload = "\n".concat(lines.slice(i))
+        return ret
+    }
+</script>
