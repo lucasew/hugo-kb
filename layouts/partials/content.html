@@ -36,4 +36,12 @@
     {{ end }}
 {{ end }}
 
+{{ $content = replaceRE  `(?s)<pre><code class="language-ad-([a-z]*)[^>]*>title:([^\n]*)\n(.*)<\/code>` (partial "admonition.html" (dict "body" (safeHTML "<markdownme>$3</markdownme>") "type" "$1" "title" "$2")) $content }}
+
+{{ $extraBlocks := findRE "(?s)<markdownme>.*</markdownme>" $content }}
+{{ range $extraBlocks }}
+{{ $body := replaceRE "(?s)<markdownme>(.*)</markdownme>" "$1" . }}
+{{ $content = replace $content . ($body | markdownify) 1 }}
+{{ end }}
+
 {{ $content | safeHTML }}
