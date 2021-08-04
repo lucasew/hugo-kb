@@ -1,3 +1,7 @@
+{{ with . }}
 {{ $title := trim (partialCached "title.html" . .Permalink) "\n "  | htmlUnescape }}
 {{ $icon := trim (partialCached "icon-url.html" .Params.icon .Params.icon) "\n" }}
 <a id="{{ .Permalink | replaceRE "[^a-zA-Z0-9]" "-" }}" class="page-link" title="{{ $title }}" style="--icon:url({{  $icon }})" href={{ .RelPermalink }}>{{ $title }}</a>
+{{ else }}
+<b>[Não encontrado]</b>
+{{ end }}
