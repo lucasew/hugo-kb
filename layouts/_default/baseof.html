@@ -31,13 +31,19 @@ signatures {
 
 signatures p {
     display: block;
-    border-top: 1px solid black;
+    border-top: 2px solid black;
     flex: 1;
     text-align: center;
     margin: 10px;
     white-space: nowrap;
     max-width: 40%;
     margin-top: 1.5rem;
+}
+
+@media not print {
+    signatures p {
+        border-top: 1px solid black;
+    }
 }
 
 img {
