@@ -114,6 +114,26 @@ padding-right: 10px;
     
 }
 
+.toc ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.toc ul li {
+    list-style-type: none;
+}
+
+.toc {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 1rem;
+}
+
+.toc ul li a:hover {
+    text-decoration: underline;
+}
+
 a {
     background: var(--icon) no-repeat left center;
     background-size: 20px 20px;
@@ -190,6 +210,11 @@ input[type="checkbox"]:checked {
         {{- block "content-header" . -}}{{ end }}
     </header>
     <main class="main">
+        {{ if .Params.toc }}
+            <div class="toc">
+                {{.TableOfContents}}
+            </div>
+        {{ end }}
         {{ partialCached "content.html" . .Permalink }}
     </main>
     <footer>
