@@ -3,7 +3,7 @@
     margin: 20px;
     border: 2px solid var(--admonition-border);
     border-radius: 5px;
-    --admonition-border: black;
+    --admonition-border: var(--text-color);
     --admonition-bg: white;
     --admonition-icon: url(https://raw.githubusercontent.com/feathericons/feather/master/icons/info.svg)
 }
@@ -35,6 +35,10 @@
     display: flex;
     align-items: center;
     background-color: var(--admonition-bg);
+}
+
+body.dark .admonition-header {
+    color: var(--background-color);
 }
 
 .admonition-icon {

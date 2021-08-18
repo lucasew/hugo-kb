@@ -12,6 +12,33 @@
     <script>console.log("{{ .Permalink }}")</script>
 <style>
 
+body:not(.dark) {
+    --background-color: white;
+    --text-color: black;
+    --table-border-color: black;
+    --table-border-radius: 1rem;
+    --table-padding: .5rem;
+}
+
+body.dark {
+    --background-color: black;
+    --text-color: white;
+    --table-border-color: white;
+}
+
+
+body {
+    border-color: var(--text-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+body.dark .icon, body.dark a {
+    filter: contrast(1);
+    <!-- filter: brightness(1); -->
+    color: var(--text-color);
+}
+
 @page {
     margin: 0
 }
@@ -107,16 +134,16 @@ header {
     width: 20px;
     height: 20px;
     float: left;
-padding-right: 10px;
+    padding-right: 10px;
 
     background-repeat: no-repeat;
     background-size: contain;
-    
 }
+
 
 .toc ul li a {
     text-decoration: none;
-    color: black;
+    color: var(--text-color);
 }
 
 .toc ul li {
@@ -134,28 +161,40 @@ padding-right: 10px;
     text-decoration: underline;
 }
 
-a {
-    background: var(--icon) no-repeat left center;
+
+a.with-icon {
+    background-image: var(--icon);
+    background-blend-mode: screen;
+    background-repeat: no-repeat;
+    background-position: left center;
     background-size: 20px 20px;
 }
 
-.page-link {
+body.dark a.with-icon {
+    filter: invert(100%);
+    /* it's expected that the foreground color is the reverse of the background color */
+    color: var(--background-color); 
+}
+
+a.page-link {
     display: inline-block;
     break-before: avoid;
-    border-bottom: 3px black solid;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
     padding: 3px;
     text-decoration: none;
-    color: black;
     max-width: min(80vw, 300px);
     white-space: nowrap;
     text-overflow: ellipsis;
     margin: 0;
     overflow-x: hidden;
     padding-left: 25px;
+    color: var(--text-color);
 }
 
 blockquote {
-    border-left: 5px black solid;
+    border-left-width: 5px;
+    border-left-style: solid;
     padding-left: 10px;
 }
 
@@ -172,6 +211,44 @@ ul {
     list-style-position: outside;
 }
 
+table th {
+    padding: var(--table-padding);
+}
+
+table {
+  border: 1px solid var(--table-border-color);
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--table-border-radius);
+  margin: auto;
+  padding: var(--table-padding);
+}
+/*
+ * Add the border to table cell/header
+ */
+
+table td,
+table th {
+  border-top: 1px solid var(--table-border-color);
+  border-left: 1px solid var(--table-border-color);
+}
+
+table tbody:first-child tr:first-child td,
+table thead:first-child tr:first-child th {
+  border-top-width: 0;
+}
+
+table thead:first-child tr td:first-child,
+table thead:first-child tr th:first-child {
+  border-left-width: 0;
+}
+
+table tbody:last-child tr td:first-child,
+table tbody:last-child tr th:first-child {
+  border-left-width: 0;
+}
+
+
 input[type="checkbox"] {
     appearance: none;
     aspect-ratio: 1/1;
@@ -179,13 +256,13 @@ input[type="checkbox"] {
     height: 1rem;
     box-sizing: content-box;
     vertical-align: middle;
-    border: 2px solid black;
+    border: 2px solid;
     border-radius: .2rem;
     display: inline-block;
     margin: 0;
 }
 input[type="checkbox"]:checked {
-    background-color: black;
+    background-color: var(--text-color);
 }
 
 @media print {
@@ -203,6 +280,7 @@ input[type="checkbox"]:checked {
 
 <body data-page_id="{{ .Permalink | replaceRE "[^a-zA-Z0-9]" "-" }}" data-file_name="{{ with .File }}{{ .Path }}{{ end }}">
     {{ partialCached "script-utils.html" . }}
+    <!-- <button onclick="document.body.classList.toggle('dark')">Dark</button> -->
     <header>
         <div id="header-title">
             {{ partialCached "icon.html" .Params.icon .Params.icon }}

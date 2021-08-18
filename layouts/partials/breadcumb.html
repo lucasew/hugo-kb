@@ -4,15 +4,19 @@ div#breadcrumbs {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 10px;
 }
 div#breadcrumbs > * {
-    color: black;
     margin: 1px;
     padding: 5px;
     border-radius: 5px;
     padding-left: 25px;
     text-decoration: none;
-    border: black 2px solid;
+    border: 2px solid var(--text-color);
+}
+
+body.dark div#breadcrumbs > * {
+    border: 2px solid var(--background-color);
 }
 
 div#breadcrumbs > .icon {
@@ -39,7 +43,7 @@ div#breadcrumbs > .active {
     {{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
 {{ end }}
     {{ if (eq .p1 .p2) }}
-        {{ partialCached "icon.html" .p1.Params.icon .p1.Params.icon }}
+    <a class="with-icon" style="background-position: center; --icon:url({{ trim ( partialCached "icon-url.html" .p1.Params.icon .p1.Params.icon) "\n" }})" class="page-link"><br/></a>
     {{ else }}
         {{ partialCached "page-link.html" .p1 .p1.Permalink }}
     {{ end }}
