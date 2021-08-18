@@ -3,14 +3,18 @@
         const before = "{{ partial "icon.html" "@@/" }}";
         const url = n.href;
         const icon = "https://s2.googleusercontent.com/s2/favicons?domain_url=" + url;
-        n.style.setProperty("--icon", `url(${icon})`);
-        n.style.paddingLeft = "20px";
-
         (async function test () {
             const trimmedURL = url.replace(/https?:\/\/?/, "");
             const res = await fetch("https://url-title.vercel.app/" + trimmedURL)
+            if (!res.ok) {
+                console.log("not ok")
+                return
+            }
             const text = await res.text()
             n.title = text
+            n.classList.add("with-icon")
+            n.style.setProperty("--icon", `url("${icon}")`);
+            n.style.paddingLeft = "20px";
         })()
     })
 </script>
