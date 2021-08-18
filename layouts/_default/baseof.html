@@ -67,6 +67,17 @@ signatures p {
     margin-top: 1.5rem;
 }
 
+p center-next + * {
+    box-sizing: content-box;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+center-next {
+    display: none;
+}
+
 @media not print {
     signatures p {
         border-top: 1px solid black;
