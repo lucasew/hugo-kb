@@ -15,7 +15,7 @@
     {{ end }}
     <link rel="shortcut icon" href="{{trim (partialCached "icon-url.html" .Params.icon .Params.icon) "\n" }}">
     <title>{{ partialCached "title.html" .Page .Page.Permalink }}</title>
-    <script>console.log("{{ .Permalink }}")</script>
+    <link rel="preload" href="/style.css" as="style">
     <link rel="stylesheet" href="/style.css">
 </head>
 
@@ -46,9 +46,7 @@
     {{ partialCached "backlinks.html" . .Permalink }}
     {{ partialCached "addon-plantuml.html" . }}
     {{ partialCached "addon-katex.html" . }}
-    {{ partialCached "addon-link-enhancer.html" . }}
-    {{ partialCached "addon-backlink-jumper.html" . }}
-    {{ partialCached "addon-copypathclipboard" . }}
+    <script type="text/javascript" src="/script.js"></script>
     </footer>
     </body>
 </html>
