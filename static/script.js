@@ -46,4 +46,16 @@ document.querySelectorAll("a[href^='http']").forEach(n => {
         n.style.setProperty("--icon", `url(${icon})`);
         n.style.paddingLeft = "20px";
     })()
+});
+
+/* =========== FATHERPROP ======= */
+// this bad boy forwards it's attributes to the parent element
+document.querySelectorAll("fatherprop").forEach(n => {
+    let props = {};
+    const attributes = n.getAttributeNames()
+    const parentElement = n.parentElement
+    n.getAttributeNames().forEach((attr) => {
+        parentElement.setAttribute(attr, n.getAttribute(attr));
+    })
+    parentElement.removeChild(n)
 })

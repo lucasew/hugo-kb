@@ -230,6 +230,7 @@ table th {
   border-left: 1px solid var(--table-border-color);
 }
 
+
 table tbody:first-child tr:first-child td,
 table thead:first-child tr:first-child th {
   border-top-width: 0;
@@ -245,6 +246,11 @@ table tbody:last-child tr th:first-child {
   border-left-width: 0;
 }
 
+td:empty, th:empty {
+    display: none;
+    border: none;
+    padding: 0;
+}
 /* =========== TODO MARKERS ========= */
 
 input[type="checkbox"] {
