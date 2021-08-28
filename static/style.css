@@ -139,11 +139,6 @@ header {
     background-size: contain;
 }
 
-body.dark span.icon {
-    filter: invert(100%);
-}
-
-
 .toc ul li a {
     text-decoration: none;
     color: var(--text-color);
@@ -172,8 +167,12 @@ a.with-icon {
     background-size: 20px 20px;
 }
 
+.with-icon, .icon {
+    filter: grayscale(100%);
+}
+
 body.dark a.with-icon {
-    filter: invert(100%);
+    filter: grayscale(100%) invert(100%);
     /* it's expected that the foreground color is the reverse of the background color */
     color: var(--background-color); 
 }
@@ -181,16 +180,14 @@ body.dark a.with-icon {
 a.page-link {
     display: inline-block;
     break-before: avoid;
-    border-bottom-width: 3px;
-    border-bottom-style: solid;
-    padding: 3px;
-    text-decoration: none;
+    padding: 1px;
+    text-decoration: underline;
     max-width: min(80vw, 300px);
     white-space: nowrap;
     text-overflow: ellipsis;
     margin: 0;
-    overflow-x: hidden;
     padding-left: 25px;
+    overflow-x: hidden;
     color: var(--text-color);
 }
 
@@ -260,8 +257,8 @@ td:empty, th:empty {
 input[type="checkbox"] {
     appearance: none;
     aspect-ratio: 1/1;
-    width: 1rem;
-    height: 1rem;
+    width: 0.5rem;
+    height: 0.5rem;
     box-sizing: content-box;
     vertical-align: middle;
     border: 2px solid;
@@ -406,3 +403,4 @@ body.dark .theme-chooser-moon {
         display: none;
     }
 }
+
