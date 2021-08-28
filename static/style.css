@@ -19,12 +19,6 @@ body {
     color: var(--text-color);
 }
 
-body.dark .icon, body.dark a {
-    filter: contrast(1);
-    <!-- filter: brightness(1); -->
-    color: var(--text-color);
-}
-
 @page {
     margin: 0
 }
@@ -159,12 +153,13 @@ header {
     text-decoration: underline;
 }
 
+/* ============ ICONS ======= */
 
-a.with-icon {
+.with-icon {
     background-image: var(--icon);
     background-repeat: no-repeat;
     background-position: left center;
-    background-size: 20px 20px;
+    background-size: 15px 15px;
 }
 
 .with-icon, .icon {
@@ -177,16 +172,15 @@ body.dark a.with-icon {
     color: var(--background-color); 
 }
 
-a.page-link {
-    display: inline-block;
+.page-link {
+    /* display: inline-block; */
     break-before: avoid;
-    padding: 1px;
+    padding-right: 3px;
     text-decoration: underline;
     max-width: min(80vw, 300px);
     white-space: nowrap;
     text-overflow: ellipsis;
-    margin: 0;
-    padding-left: 25px;
+    padding-left: 18px;
     overflow-x: hidden;
     color: var(--text-color);
 }
@@ -352,7 +346,7 @@ div#breadcrumbs > * {
     margin: 1px;
     padding: 5px;
     border-radius: 5px;
-    padding-left: 25px;
+    padding-left: 18px;
     text-decoration: none;
     border: 2px solid var(--text-color);
 }

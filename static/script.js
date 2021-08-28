@@ -44,7 +44,6 @@ document.querySelectorAll("a[href^='http']").forEach(n => {
         n.title = text
         n.classList.add("with-icon")
         n.style.setProperty("--icon", `url(${icon})`);
-        n.style.paddingLeft = "20px";
     })()
 });
 
