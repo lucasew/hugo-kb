@@ -59,3 +59,12 @@ document.querySelectorAll("fatherprop").forEach(n => {
     })
     parentElement.removeChild(n)
 })
+
+/* =========== THEME CHOOSER ======== */
+window.toggleTheme = () => {
+    document.body.classList.toggle('dark')
+}
+document.querySelectorAll(".theme-chooser").forEach(n => {
+    n.style.cursor = "pointer"
+    n.addEventListener('click', toggleTheme)
+})

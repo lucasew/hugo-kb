@@ -26,6 +26,7 @@
         <div id="header-title">
             {{ partialCached "icon.html" .Params.icon .Params.icon }}
             <h1>{{ partialCached "title.html" .Page .Page.Permalink }}</h1>
+            {{ partialCached "theme-chooser.html" "" "" }}
         </div>
         {{- partialCached "breadcumb.html" . .Page.Permalink -}}
         {{ with .Params.web }}

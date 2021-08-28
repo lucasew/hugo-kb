@@ -373,3 +373,32 @@ div#breadcrumbs > .active {
         display: none;
     }
 }
+
+
+
+/* ========= THEME CHOOSER =========== */
+.theme-chooser {
+    margin-left: 5px;
+    background-color: var(--background-color);
+    padding: 0;
+    background: 0 0;
+    border: 0;
+}
+
+.theme-chooser > * {
+    color: var(--text-color);
+}
+
+body:not(.dark) .theme-chooser-sun {
+    display: none;
+}
+
+body.dark .theme-chooser-moon {
+    display: none;
+}
+
+@media print {
+    .theme-chooser {
+        display: none;
+    }
+}
