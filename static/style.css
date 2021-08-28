@@ -139,6 +139,10 @@ header {
     background-size: contain;
 }
 
+body.dark span.icon {
+    filter: invert(100%);
+}
+
 
 .toc ul li a {
     text-decoration: none;

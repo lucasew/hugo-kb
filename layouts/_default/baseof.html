@@ -21,7 +21,6 @@
 
 <body data-page_id="{{ .Permalink | replaceRE "[^a-zA-Z0-9]" "-" }}" data-file_name="{{ with .File }}{{ .Path }}{{ end }}">
     {{ partialCached "script-utils.html" . }}
-    <!-- <button onclick="document.body.classList.toggle('dark')">Dark</button> -->
     <header>
         <div id="header-title">
             {{ partialCached "icon.html" .Params.icon .Params.icon }}
