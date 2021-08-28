@@ -123,16 +123,6 @@ header {
     align-items: center;
 }
 
-.icon {
-    width: 20px;
-    height: 20px;
-    float: left;
-    padding-right: 10px;
-
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
 .toc ul li a {
     text-decoration: none;
     color: var(--text-color);
@@ -166,7 +156,20 @@ header {
     filter: grayscale(100%);
 }
 
-body.dark a.with-icon {
+.icon {
+    width: 20px;
+    height: 20px;
+    float: left;
+    padding-right: 10px;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+
+body.dark .with-icon, 
+body.dark .icon {
     filter: grayscale(100%) invert(100%);
     /* it's expected that the foreground color is the reverse of the background color */
     color: var(--background-color); 
