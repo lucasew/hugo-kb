@@ -8,7 +8,6 @@
     padding-right: 10px;
 }
     </style>
-    <script>console.log("{{ getJSON "./content/meta.json" }}")</script>
     {{ $prop := .Page.RelPermalink | replaceRE ".*/(.*)/$" "$1" }}
     {{ $tax := index .Site.Taxonomies $prop }}
     {{ range $tax.ByCount }}
@@ -16,6 +15,4 @@
         {{ partial "page-link.html" .Page }} ({{ .Count }})<br>
         </div>
     {{ end }}
-    <script>console.log("{{ $prop }}")</script>
-    <script>console.log("{{ $tax }}")</script>
 {{- end -}}
