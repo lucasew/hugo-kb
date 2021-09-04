@@ -1,0 +1,11 @@
+name: hugo-kb
+license: MIT
+source_repo: https://github.com/lucasew/hugo-kb/
+description: A theme created to render knowledge bases, originally from Obsidian
+features:
+    - responsive
+    - single-column
+    - table-of-contents
+    - theme-toggle
+author:
+    url: https://github.com/lucasew
