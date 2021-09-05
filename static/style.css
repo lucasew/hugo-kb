@@ -150,6 +150,7 @@ header {
     background-repeat: no-repeat;
     background-position: left center;
     background-size: 15px 15px;
+    padding-left: 18px;
 }
 
 .with-icon, .icon {
@@ -183,7 +184,6 @@ body.dark .icon {
     max-width: min(80vw, 300px);
     white-space: nowrap;
     text-overflow: ellipsis;
-    padding-left: 18px;
     overflow-x: hidden;
     color: var(--text-color);
 }
