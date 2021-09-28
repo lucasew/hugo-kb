@@ -3,7 +3,7 @@
     {{ $page := .Page }}
     {{ $content := .Content }}
 
-    {{ $content = replaceRE  `(?s)<pre><code class="language-ad-([a-z]*)[^>]*>title:([^\n]*)\n(.+?)<\/code><\/pre>` (partial "admonition.html" (dict "body" (safeHTML "<markdownme>$3</markdownme>") "type" "$1" "title" "$2")) $content }}
+    {{ $content = replaceRE  `(?s)<pre.*><code class="language-ad-([a-z]*)[^>]*>title:([^\n]*)\n(.+?)<\/code><\/pre>` (partial "admonition.html" (dict "body" (safeHTML "<markdownme>$3</markdownme>") "type" "$1" "title" "$2")) $content }}
 
     {{ $extraBlocks := findRE "(?s)<markdownme>.+?</markdownme>" $content }}
     {{ range $extraBlocks }}
