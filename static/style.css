@@ -111,10 +111,10 @@ div#header-title h1 {
     text-align: center;
 }
 
-div#header-title .icon {
+div#header-title svg {
     width: 30px;
     height: 30px;
-    padding-right: 10px;
+    /* padding-right: 10px; */
 }
 
 header {
@@ -343,11 +343,10 @@ div#breadcrumbs {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 10px;
 }
 div#breadcrumbs > * {
+    padding: 10px;
     margin: 1px;
-    padding: 5px;
     border-radius: 5px;
     padding-left: 18px;
     text-decoration: none;
@@ -358,7 +357,7 @@ body.dark div#breadcrumbs > * {
     border: 2px solid var(--background-color);
 }
 
-div#breadcrumbs > .icon {
+div#breadcrumbs > svg {
     width: 20px;
     height: 20px;
 }

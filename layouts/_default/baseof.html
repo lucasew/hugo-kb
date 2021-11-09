@@ -13,7 +13,6 @@
     {{ with .Page.File }}
     <meta name="mdpath" content="{{ .Path }}" />
     {{ end }}
-    <link rel="shortcut icon" href="{{trim (partialCached "icon-url.html" .Params.icon .Params.icon) "\n" }}">
     <title>{{ partialCached "title.html" .Page .Page.Permalink }}</title>
     <link rel="preload" href="/style.css" as="style">
     <link rel="stylesheet" href="/style.css">
@@ -23,7 +22,7 @@
     {{ partialCached "script-utils.html" . }}
     <header>
         <div id="header-title">
-            {{ partialCached "icon.html" .Params.icon .Params.icon }}
+            <span data-icon="{{ .Params.icon | safeURL }}" class="iconify"></span>
             <h1>{{ partialCached "title.html" .Page .Page.Permalink }}</h1>
             {{ partialCached "theme-chooser.html" "" "" }}
         </div>
@@ -49,4 +48,5 @@
     <script type="text/javascript" src="/script.js"></script>
     </footer>
     </body>
+    <script src="https://code.iconify.design/2/2.0.4/iconify.min.js"></script>
 </html>

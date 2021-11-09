@@ -8,7 +8,7 @@
     {{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
 {{ end }}
     {{ if (eq .p1 .p2) }}
-    <a class="with-icon" style="background-position: center; --icon:url({{ trim ( partialCached "icon-url.html" .p1.Params.icon .p1.Params.icon) "\n" }})" class="page-link"><br/></a>
+        <span class="iconify-inline" data-icon="{{ .p1.Params.icon | safeURL }}"></span>
     {{ else }}
         {{ partialCached "page-link.html" .p1 .p1.Permalink }}
     {{ end }}
