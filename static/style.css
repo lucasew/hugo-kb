@@ -319,7 +319,7 @@ input[type="checkbox"]:checked {
 }
 
 .admonition-info {
-    --admonition-bg: blue;
+    --admonition-bg: deepskyblue;
 }
 
 .admonition-header {
