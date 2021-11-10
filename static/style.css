@@ -23,6 +23,16 @@ body {
     margin: 0
 }
 
+a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 /* ========== CUSTOM HTML MARKS ============= */
 
 page-break {
@@ -322,7 +332,6 @@ input[type="checkbox"]:checked {
 body.dark .admonition-header {
     color: var(--background-color);
 }
-
 
 .admonition-icon {
     width: 30px;
